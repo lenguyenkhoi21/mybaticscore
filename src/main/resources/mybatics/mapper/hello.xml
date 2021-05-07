@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.example.mapper.HelloMapper">
+    <select id="selectHello" resultType="org.example.model.Hello">
+        <![CDATA[
+            SELECT
+                `id` AS id,
+                `content` AS content,
+                `number` AS number,
+                `name` AS name
+            FROM `mybatics`.`hello`
+            WHERE `id` = #{id}
+        ]]>
+    </select>
+
+    <select id="selectAllHello" resultType="org.example.model.Hello">
+        <![CDATA[
+            SELECT
+                `id` AS id,
+                `content` AS content,
+                `number` AS number,
+                `name` AS name
+            FROM `mybatics`.`hello`
+        ]]>
+    </select>
+
+    <insert id="insertHello" parameterType="org.example.model.Hello">
+        <![CDATA[
+            INSERT INTO `mybatics`.`hello` (`id`, `content`, `number`, `name`)
+            VALUE (#{id}, #{content}, #{number}, #{name})
+        ]]>
+    </insert>
+
+    <update id="updateHello" parameterType="org.example.model.Hello">
+        <![CDATA[
+            UPDATE `mybatics`.`hello` SET
+                `content` = #{content},
+                `number` = #{number},
+                `name` = #{name}
+            WHERE `id` = #{id}
+        ]]>
+    </update>
+
+    <delete id="deleteHello" parameterType="org.example.model.Hello">
+        <![CDATA[
+            DELETE FROM `mybatics`.`hello`
+            WHERE `id` = #{id}
+        ]]>
+    </delete>
+</mapper>
+
